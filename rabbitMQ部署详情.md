@@ -1,3 +1,35 @@
+CentOS 7下修改rabbitmq打开文件数量方法
+1、系统层修改：
+
+通过修改sysctl配置，提高系统的打开文件数量
+
+vim /etc/sysctl.conf，添加：
+
+fs.file-max = 65535
+
+执行sysctl -p
+
+此步骤调整后，打开rabbitmq管理页面，会发现rabbitmq最大的打开文件数量并未调整，需要进行下面步骤
+
+2、修改rabbitmq配置
+
+修改/etc/systemd/system/multi-user.target.wants/rabbitmq-server.service
+
+在[Service]中，增加LimitNOFILE=20000（具体数值根据需要）
+
+执行z
+
+重启rabbitmq服务
+
+
+
+
+
+
+
+
+
+
 
 集群主机信息：
 
