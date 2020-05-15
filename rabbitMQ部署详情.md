@@ -22,6 +22,12 @@ fs.file-max = 65535
 重启rabbitmq服务
 
 
+3、修改rabbitmq配置文件，调整内存大小,默认是系统内存的0.4
+cat /etc/rabbitmq/rabbitmq.config  
+[{rabbit,[{vm_memory_high_watermark,0.4}]}].
+
+
+
 
 
 
